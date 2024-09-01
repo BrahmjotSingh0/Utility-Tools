@@ -10,13 +10,21 @@ function Notes() {
             margin: '20px'
         },
         input: {
-            margin: '10px'
+            margin: '10px',
+            padding: '5px',
+            borderRadius: '5px'
         },
         textarea: {
-            margin: '10px'
+            margin: '10px',
+            padding: '5px',
+            borderRadius: '5px'
         },
         button: {
-            margin: '10px'
+            margin: '10px',
+            padding: '5px 10px',
+            backgroundColor: 'black',
+            color: 'white',
+            borderRadius: '10px'
         },
         notesContainer: {
             display: 'flex',
@@ -78,7 +86,9 @@ function Notes() {
             <input type="text" placeholder="Title" style={styles.input} />
             <textarea placeholder="Content" style={styles.textarea}></textarea>
             <button onClick={addNote} style={styles.button}>Add</button>
+            
             <h3>Notes</h3>
+            <p>Tap on a note to remove.</p>
             <div style={styles.notesContainer}>
                 <ul style={styles.ul}>
                     {notes.map((note, index) => (
