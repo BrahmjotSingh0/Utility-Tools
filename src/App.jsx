@@ -7,6 +7,7 @@ import Overlay from "./MainPage/Components/Overlay/Overlay.jsx";
 import Calculator from "./Apps/Calculator.jsx";
 import { useEffect } from "react";
 import Notes from "./Apps/Notes.jsx";
+import Weather from "./Apps/Weather.jsx";
 
 function App() {
     const icon = "https://icons8.com/icon/20544/tools";
@@ -34,7 +35,7 @@ function App() {
                 content = <Calculator />;
                 break;
             case "Weather":
-                content = <div>Weather information goes here</div>;
+                content = <Weather />;
                 break;
             case "Notes":
                 content = <Notes />;
