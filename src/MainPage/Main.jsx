@@ -26,7 +26,9 @@ function Main() {
                 <h2>Utility Tools:</h2>
                 <p>A best tools for daily use, Designed and developed by Brahmjot Singh.</p>
             </div>
-
+        <alert className="alert alert-warning" role="alert">
+            Please note: This Website use Cookies to store data.
+        </alert>
         </div>
     );
 }
