@@ -18,15 +18,28 @@ function Notes() {
         button: {
             margin: '10px'
         },
+        notesContainer: {
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            marginTop: '20px'
+        },
         ul: {
             listStyle: 'none',
-            padding: 0
+            padding: 0,
+            display: 'flex',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            justifyContent: 'center'
         },
         li: {
             border: '1px solid #ccc',
             borderRadius: '5px',
             padding: '10px',
-            margin: '5px'
+            margin: '10px',
+            width: '200px',
+            boxSizing: 'border-box'
         }
     };
 
@@ -66,14 +79,16 @@ function Notes() {
             <textarea placeholder="Content" style={styles.textarea}></textarea>
             <button onClick={addNote} style={styles.button}>Add</button>
             <h3>Notes</h3>
-            <ul style={styles.ul}>
-                {notes.map((note, index) => (
-                    <li key={index} style={styles.li} onClick={() => removeNote(index)}>
-                        <h4>{note.title}</h4>
-                        <p>{note.content}</p>
-                    </li>
-                ))}
-            </ul>
+            <div style={styles.notesContainer}>
+                <ul style={styles.ul}>
+                    {notes.map((note, index) => (
+                        <li key={index} style={styles.li} onClick={() => removeNote(index)}>
+                            <h4>{note.title}</h4>
+                            <p>{note.content}</p>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 }

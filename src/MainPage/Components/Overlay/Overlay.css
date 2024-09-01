@@ -15,6 +15,8 @@
     padding: 20px;
     border-radius: 8px;
     width: 300px;
+    max-height: 80vh; /* Set a maximum height */
+    overflow: auto; /* Enable scrolling if content overflows */
     text-align: center;
     position: relative;
 }
