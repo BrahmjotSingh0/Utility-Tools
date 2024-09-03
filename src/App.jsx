@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import Notes from "./Apps/Notes.jsx";
 import Weather from "./Apps/Weather.jsx";
 import Dogs from "./Apps/Dogs.jsx";
+import Jokes from "./Apps/Jokes.jsx";
 
 function App() {
     const icon = "https://icons8.com/icon/20544/tools";
@@ -44,6 +45,9 @@ function App() {
             case "Dogs":
                 content = <Dogs />;
                 break;
+            case "Jokes":
+                content = <Jokes />;
+                break;
             default:
                 content = null;
         }
@@ -78,6 +82,12 @@ function App() {
                     content="Get random images of dogs to brighten your day."
                     image="https://img.icons8.com/ios/452/dog.png"
                     onClick={() => handleCardClick("Dogs")}
+                />
+                <Card
+                    title="Jokes"
+                    content="Get random jokes to lighten up your mood."
+                    image="https://img.icons8.com/?size=100&id=pcCSHYJczCPb&format=png&color=000000"
+                    onClick={() => handleCardClick("Jokes")}
                 />
             </div>
             <Overlay
