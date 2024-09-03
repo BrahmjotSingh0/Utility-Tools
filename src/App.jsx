@@ -8,6 +8,7 @@ import Calculator from "./Apps/Calculator.jsx";
 import { useEffect } from "react";
 import Notes from "./Apps/Notes.jsx";
 import Weather from "./Apps/Weather.jsx";
+import Dogs from "./Apps/Dogs.jsx";
 
 function App() {
     const icon = "https://icons8.com/icon/20544/tools";
@@ -40,6 +41,9 @@ function App() {
             case "Notes":
                 content = <Notes />;
                 break;
+            case "Dogs":
+                content = <Dogs />;
+                break;
             default:
                 content = null;
         }
@@ -68,6 +72,12 @@ function App() {
                     content="A simple note-taking app to keep track of your notes."
                     image="https://img.icons8.com/ios/452/note.png"
                     onClick={() => handleCardClick("Notes")}
+                />
+                <Card
+                    title="Dogs"
+                    content="Get random images of dogs to brighten your day."
+                    image="https://img.icons8.com/ios/452/dog.png"
+                    onClick={() => handleCardClick("Dogs")}
                 />
             </div>
             <Overlay
