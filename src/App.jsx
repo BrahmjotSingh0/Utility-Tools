@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import Header from "./MainPage/Header.jsx";
 import Footer from "./MainPage/Footer.jsx";
@@ -10,6 +11,7 @@ import Notes from "./Apps/Notes.jsx";
 import Weather from "./Apps/Weather.jsx";
 import Dogs from "./Apps/Dogs.jsx";
 import Jokes from "./Apps/Jokes.jsx";
+import Converter from "./Apps/Converter.jsx";
 
 function App() {
     const icon = "https://icons8.com/icon/20544/tools";
@@ -47,6 +49,9 @@ function App() {
                 break;
             case "Jokes":
                 content = <Jokes />;
+                break;
+            case "Converter":
+                content = <Converter />;
                 break;
             default:
                 content = null;
@@ -88,6 +93,12 @@ function App() {
                     content="Get random jokes to lighten up your mood."
                     image="https://img.icons8.com/?size=100&id=pcCSHYJczCPb&format=png&color=000000"
                     onClick={() => handleCardClick("Jokes")}
+                />
+                <Card
+                    title="Converter"
+                    content="Convert between different units of measurement."
+                    image="https://img.icons8.com/ios/452/weight.png"
+                    onClick={() => handleCardClick("Converter")}
                 />
             </div>
             <Overlay
