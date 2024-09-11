@@ -3,264 +3,101 @@ import { useState } from "react";
 function Converter() {
     const [result, setResult] = useState('');
 
+    const conversionFactors = {
+        Millimeters: {
+            Millimeters: 1,
+            Centimeters: 0.1,
+            Meters: 0.001,
+            Kilometers: 0.000001,
+            Inches: 0.0393701,
+            Foot: 0.00328084,
+            Yards: 0.00109361,
+            Miles: 6.2137e-7,
+        },
+        Centimeters: {
+            Millimeters: 10,
+            Centimeters: 1,
+            Meters: 0.01,
+            Kilometers: 0.00001,
+            Inches: 0.393701,
+            Foot: 0.0328084,
+            Yards: 0.0109361,
+            Miles: 6.2137e-6,
+        },
+        Meters: {
+            Millimeters: 1000,
+            Centimeters: 100,
+            Meters: 1,
+            Kilometers: 0.001,
+            Inches: 39.3701,
+            Foot: 3.28084,
+            Yards: 1.09361,
+            Miles: 0.000621371,
+        },
+        Kilometers: {
+            Millimeters: 1000000,
+            Centimeters: 100000,
+            Meters: 1000,
+            Kilometers: 1,
+            Inches: 39370.1,
+            Foot: 3280.84,
+            Yards: 1093.61,
+            Miles: 0.621371,
+        },
+        Inches: {
+            Millimeters: 25.4,
+            Centimeters: 2.54,
+            Meters: 0.0254,
+            Kilometers: 0.0000254,
+            Inches: 1,
+            Foot: 0.0833333,
+            Yards: 0.0277778,
+            Miles: 0.000015783,
+        },
+        Foot: {
+            Millimeters: 304.8,
+            Centimeters: 30.48,
+            Meters: 0.3048,
+            Kilometers: 0.0003048,
+            Inches: 12,
+            Foot: 1,
+            Yards: 0.333333,
+            Miles: 0.000189394,
+        },
+        Yards: {
+            Millimeters: 914.4,
+            Centimeters: 91.44,
+            Meters: 0.9144,
+            Kilometers: 0.0009144,
+            Inches: 36,
+            Foot: 3,
+            Yards: 1,
+            Miles: 0.000568182,
+        },
+        Miles: {
+            Millimeters: 1.60934e+6,
+            Centimeters: 160934,
+            Meters: 1609.34,
+            Kilometers: 1.60934,
+            Inches: 63360,
+            Foot: 5280,
+            Yards: 1760,
+            Miles: 1,
+        },
+    };
+
     function convert() {
         const value = parseFloat(document.getElementById('value').value);
         const from = document.getElementById('from').value;
         const to = document.getElementById('to').value;
 
-        let conversionResult;
-
-        switch(from) {
-            case 'Millimeters':
-                switch(to) {
-                    case 'Millimeters':
-                        conversionResult = value;
-                        break;
-                    case 'Centimeters':
-                        conversionResult = value / 10;
-                        break;
-                    case 'Meters':
-                        conversionResult = value / 1000;
-                        break;
-                    case 'Kilometers':
-                        conversionResult = value / 1000000;
-                        break;
-                    case 'Inches':
-                        conversionResult = value * 0.0393701;
-                        break;
-                    case 'Foot':
-                        conversionResult = value * 0.00328084;
-                        break;
-                    case 'Yards':
-                        conversionResult = value * 0.00109361;
-                        break;
-                    case 'Miles':
-                        conversionResult = value * 6.2137e-7;
-                        break;
-                    default:
-                        conversionResult = 'Invalid unit';
-                }
-                break;
-            case 'Centimeters':
-                switch(to) {
-                    case 'Millimeters':
-                        conversionResult = value * 10;
-                        break;
-                    case 'Centimeters':
-                        conversionResult = value;
-                        break;
-                    case 'Meters':
-                        conversionResult = value / 100;
-                        break;
-                    case 'Kilometers':
-                        conversionResult = value / 100000;
-                        break;
-                    case 'Inches':
-                        conversionResult = value * 0.393701;
-                        break;
-                    case 'Foot':
-                        conversionResult = value * 0.0328084;
-                        break;
-                    case 'Yards':
-                        conversionResult = value * 0.0109361;
-                        break;
-                    case 'Miles':
-                        conversionResult = value * 6.2137e-6;
-                        break;
-                    default:
-                        conversionResult = 'Invalid unit';
-                }
-                break;
-            case 'Meters':
-                switch(to) {
-                    case 'Millimeters':
-                        conversionResult = value * 1000;
-                        break;
-                    case 'Centimeters':
-                        conversionResult = value * 100;
-                        break;
-                    case 'Meters':
-                        conversionResult = value;
-                        break;
-                    case 'Kilometers':
-                        conversionResult = value / 1000;
-                        break;
-                    case 'Inches':
-                        conversionResult = value * 39.3701;
-                        break;
-                    case 'Foot':
-                        conversionResult = value * 3.28084;
-                        break;
-                    case 'Yards':
-                        conversionResult = value * 1.09361;
-                        break;
-                    case 'Miles':
-                        conversionResult = value * 0.000621371;
-                        break;
-                    default:
-                        conversionResult = 'Invalid unit';
-                }
-                break;
-
-            case 'Kilometers':
-                switch(to) {
-                    case 'Millimeters':
-                        conversionResult = value * 1000000;
-                        break;
-                    case 'Centimeters':
-                        conversionResult = value * 100000;
-                        break;
-                    case 'Meters':
-                        conversionResult = value * 1000;
-                        break;
-                    case 'Kilometers':
-                        conversionResult = value;
-                        break;
-                    case 'Inches':
-                        conversionResult = value * 39370.1;
-                        break;
-                    case 'Foot':
-                        conversionResult = value * 3280.84;
-                        break;
-                    case 'Yards':
-                        conversionResult = value * 1093.61;
-                        break;
-                    case 'Miles':
-                        conversionResult = value * 0.621371;
-                        break;
-                    default:
-                        conversionResult = 'Invalid unit';
-                }
-                break;
-
-            case 'Inches':
-                switch(to) {
-                    case 'Millimeters':
-                        conversionResult = value * 25.4;
-                        break;
-                    case 'Centimeters':
-                        conversionResult = value * 2.54;
-                        break;
-                    case 'Meters':
-                        conversionResult = value * 0.0254;
-                        break;
-                    case 'Kilometers':
-                        conversionResult = value * 2.54e-5;
-                        break;
-                    case 'Inches':
-                        conversionResult = value;
-                        break;
-                    case 'Foot':
-                        conversionResult = value * 0.0833333;
-                        break;
-                    case 'Yards':
-                        conversionResult = value * 0.0277778;
-                        break;
-                    case 'Miles':
-                        conversionResult = value * 1.5783e-5;
-                        break;
-                    default:
-                        conversionResult = 'Invalid unit';
-                }
-                break;
-
-            case 'Foot':
-                switch(to) {
-                    case 'Millimeters':
-                        conversionResult = value * 304.8;
-                        break;
-                    case 'Centimeters':
-                        conversionResult = value * 30.48;
-                        break;
-                    case 'Meters':
-                        conversionResult = value * 0.3048;
-                        break;
-                    case 'Kilometers':
-                        conversionResult = value * 0.0003048;
-                        break;
-                    case 'Inches':
-                        conversionResult = value * 12;
-                        break;
-                    case 'Foot':
-                        conversionResult = value;
-                        break;
-                    case 'Yards':
-                        conversionResult = value * 0.333333;
-                        break;
-                    case 'Miles':
-                        conversionResult = value * 0.000189394;
-                        break;
-                    default:
-                        conversionResult = 'Invalid unit';
-                }
-                break;
-
-            case 'Yards':
-                switch(to) {
-                    case 'Millimeters':
-                        conversionResult = value * 914.4;
-                        break;
-                    case 'Centimeters':
-                        conversionResult = value * 91.44;
-                        break;
-                    case 'Meters':
-                        conversionResult = value * 0.9144;
-                        break;
-                    case 'Kilometers':
-                        conversionResult = value * 0.0009144;
-                        break;
-                    case 'Inches':
-                        conversionResult = value * 36;
-                        break;
-                    case 'Foot':
-                        conversionResult = value * 3;
-                        break;
-                    case 'Yards':
-                        conversionResult = value;
-                        break;
-                    case 'Miles':
-                        conversionResult = value * 0.000568182;
-                        break;
-                    default:
-                        conversionResult = 'Invalid unit';
-                }
-                break;
-
-            case 'Miles':
-                switch(to) {
-                    case 'Millimeters':
-                        conversionResult = value * 1.60934e+6;
-                        break;
-                    case 'Centimeters':
-                        conversionResult = value * 160934;
-                        break;
-                    case 'Meters':
-                        conversionResult = value * 1609.34;
-                        break;
-                    case 'Kilometers':
-                        conversionResult = value * 1.60934;
-                        break;
-                    case 'Inches':
-                        conversionResult = value * 63360;
-                        break;
-                    case 'Foot':
-                        conversionResult = value * 5280;
-                        break;
-                    case 'Yards':
-                        conversionResult = value * 1760;
-                        break;
-                    case 'Miles':
-                        conversionResult = value;
-                        break;
-                    default:
-                        conversionResult = 'Invalid unit';
-                }
-                break;
-
-                
-            default:
-                conversionResult = 'Invalid unit';
+        if (isNaN(value)) {
+            setResult('Invalid input');
+            return;
         }
+
+        const conversionFactor = conversionFactors[from][to];
+        const conversionResult = value * conversionFactor;
 
         setResult(conversionResult);
     }
